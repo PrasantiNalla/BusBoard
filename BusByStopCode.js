@@ -4,12 +4,10 @@ export async function seeBusByStopCode(lat, lon, stopTypes) {
     let stopCodeData = await tflStopCodeAPIresponse.json();
     const noOfBusStops = stopCodeData.stopPoints.length;
     if (noOfBusStops >= 2) {
-
         getBusTimes(stopCodeData, 2);
     }
     else if (noOfBusStops === 1) {
         getBusTimes(stopCodeData, 1);
-
     }
     else {
         console.log("No Bus stops close by");

@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>User Input Data</title>
+</head>
+<script>
+    import getBusDetails from ".\main.js"
+    function submitEvent(event) {
+        event.preventDefault();
+        let Postcode = document.getElementById("postcode");
+        let StopType = document.getElementById("stoptype");
+        getBusDetails("Postcode", "StopType");//NaptanPublicBusCoachTram
+        //console.log(Postcode.value); //  name         
+        // console.log(StopType.value); //  email    
+    } 
+</script>
+
+<body>
+    <form onsubmit="submitEvent(event)">
+        <div>
+            <label for="postcode">Postcode</label>
+            <input type="text" name="postcode" id="postcode">
+        </div>
+        <div>
+            <label for="stoptype">Stop Type</label>
+            <input type="text" name="stoptype" id="stoptype">
+        </div>
+        <div> <button onclick=submitEvent()>Submit</button> </div>
+    </form>
+</body>
+
+</html>
