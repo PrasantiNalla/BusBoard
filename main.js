@@ -16,4 +16,5 @@ console.log('Please enter postcode:');
 let postcode = readline.prompt();
 console.log('Please enter stop type:')
 let stoptype = readline.prompt();//NaptanPublicBusCoachTram
+
 getBusDetails(postcode, stoptype);
