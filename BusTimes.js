@@ -3,11 +3,13 @@ export async function getBusTimes(stopCodeData, noOfBusStops) {
         const busStopId = stopCodeData.stopPoints[i].id;
         let tflBusStopsAPIResponse = await fetch(`https://api.tfl.gov.uk/StopPoint/${busStopId}/Arrivals`);
 
-        if (tflBusStopsAPIResponse.ok)
+        if (tflBusStopsAPIResponse.ok) {
+            const tflBusStops = await tflBusStopsAPIResponse.json();
             for (let i = 0; i < 5; i++) {
-                let tflBusStops = await tflBusStopsAPIResponse.json();
-                console.log(tflBusStops[i].lineName, tflBusStops[i].expectedArrival, tflBusStops[i].destinationName);
+                const time = tflBusStops[i].expectedArrival.slice(11, 19);
+                console.log(`Bus ${tflBusStops[i].lineName} ${time}   ${tflBusStops[i].destinationName}`);
             }
+        }
         else {
             console.log("No buses comming soon!!")
         }
