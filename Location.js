@@ -1,10 +1,12 @@
 
-import { seeBusByStopCode } from "./BusByStopCode.js";
+//import { seeBusByStopCode } from "./BusByStopCode.js";
 
-export async function getLocation(postcode, stopTypes) {
+export async function getLocation(postcode) {
     let postCodesAPIResponse = await fetch(`https://api.postcodes.io/postcodes/${postcode}`);
     let postcodeInfo = await postCodesAPIResponse.json();
     let lat = postcodeInfo.result.latitude;
     let lon = postcodeInfo.result.longitude;
-    seeBusByStopCode(lat, lon, stopTypes);
+   // console.log(lat, lon);
+    return [lat, lon];
+
 }
