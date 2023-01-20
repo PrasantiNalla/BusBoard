@@ -8,12 +8,13 @@ export async function getBusTimes(stopCodeData, noOfBusStops) {
         console.log("-------------------------------------");
         if (tflBusStopsAPIResponse.ok) {
             const tflBusStops = await tflBusStopsAPIResponse.json();
+            // tflBusStops => tflBusStops.sort((arrivalA, arrivalB) => arrivalA.timeToStation - arrivalB.timeToStation).slice(0, 5);
+
             // checking if no.of arrivals in less than or equal to 5
             for (let i = 0; (i < tflBusStops.length && i < 5); i++) {
-                const time = tflBusStops[i].expectedArrival.slice(11, 19);
-
-                console.log(`${tflBusStops[i].lineName}   ${time}   ${tflBusStops[i].destinationName}`);
-
+              //  console.log(tflBusStops[i].timeToStation);
+                const time = Math.round(tflBusStops[i].timeToStation / 60).toString().padStart(3);
+                console.log(`${tflBusStops[i].lineName}   ${time} mins   ${tflBusStops[i].destinationName}`);
             }
         }
         else {

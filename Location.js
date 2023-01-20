@@ -6,7 +6,7 @@ export async function getLocation(postcode) {
     let postcodeInfo = await postCodesAPIResponse.json();
     let lat = postcodeInfo.result.latitude;
     let lon = postcodeInfo.result.longitude;
-   // console.log(lat, lon);
-    return [lat, lon];
+    let region = postcodeInfo.result.region;
+    return [region, lat, lon];
 
 }

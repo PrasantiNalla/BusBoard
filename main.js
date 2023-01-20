@@ -7,12 +7,18 @@ async function getBusDetails(postcode) {
     const postcodeResponse = await fetch(`https://api.postcodes.io/postcodes/${postcode}/validate`);
     const postcodeDetails = await postcodeResponse.json();
     if (postcodeDetails.result) {
-        const latlon = await getLocation(postcode);
+        const regionlatlon = await getLocation(postcode);
         // to get no.of bus stops close by
-        getNearByBusStops(latlon[0], latlon[1]);
+        if (regionlatlon[0] != "London") {
+            console.log("Enter a postcode with in London");
+            process.exit();
+        }
+        else {
+            getNearByBusStops(regionlatlon[1], regionlatlon[2]);
+        }
     }
     else {
-        console.log("Invalid Postcode.")
+        console.log("Enter a valid Postcode")
     }
 }
 // get input from user 
