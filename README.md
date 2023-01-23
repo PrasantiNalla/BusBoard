@@ -6,6 +6,3 @@ Just run 'npm install' to set up the dependencies and then 'npm start' to run th
 
 ### Details
 This projecect has been developed as a part of Bootcamp trainingcd .
-
-#### Caution
-This project only works for transport for london buses
